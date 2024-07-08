@@ -18,7 +18,7 @@ export default function Login() {
                     </div>
 
                     <div className="relative">
-                        <input type="text" id="Password" className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-500" placeholder=" " required />
+                        <input type="password" id="Password" className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-500" placeholder=" " required />
                         <label htmlFor="Password" className="
                             absolute left-0 top-2 transition-all ease-in
                             peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 
