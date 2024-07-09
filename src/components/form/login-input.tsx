@@ -3,11 +3,13 @@ interface LoginInputProps {
     label: string;
     value: string;
     type: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
 export default function LoginInput(props: LoginInputProps) {
     return (
         <div className="relative">
-            <input type={props.type} id={props.label} value={props.value}
+            <input type={props.type} id={props.label} value={props.value} onChange={props.onChange}
                 className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-500" placeholder='' required
             />
             <label htmlFor={props.label} className="
