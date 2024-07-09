@@ -38,7 +38,7 @@ export default function Register() {
 
                     <LoginInput type="password" label="Confirm Password" value={formValue.confirmPassword} onChange={handleChange('confirmPassword')} />
 
-                    <button className="w-full h-10 bg-indigo-500 text-white rounded-sm hover:bg-indigo-600">Sign Up</button>
+                    <button className="btn-primary">Sign Up</button>
                 </div>
             </div>
         </div>

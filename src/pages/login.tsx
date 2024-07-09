@@ -27,7 +27,7 @@ export default function Login() {
 
                     <LoginInput type="password" label="Password" value={formValue.password} onChange={handleChange('password')}/>
 
-                    <button className="w-full h-10 bg-indigo-500 text-white rounded-sm hover:bg-indigo-600" onClick={handleSubmit}>Log in</button>
+                    <button className="btn-primary" onClick={handleSubmit}>Log in</button>
                 </div>
 
                 <p className="text-center text-gray-500">Don&apos;t have an account yet? <a href="/register" className="text-indigo-500">Register</a></p>
