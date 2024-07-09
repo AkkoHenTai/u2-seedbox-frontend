@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LoginInput from "../components/form/login-input";
+import LoginInput from "@/components/form/login-input";
 
 export default function Login() {
     const [formValue, setFormValue] = useState({
