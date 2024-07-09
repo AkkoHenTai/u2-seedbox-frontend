@@ -23,13 +23,13 @@ export default function Login() {
             <div className="w-4/12 h-4/5 bg-white rounded-3xl px-20">
                 <h1 className="text-6xl font-bold my-32 text-center">Login</h1>
 
-                <div className="w-full py-4 flex flex-col gap-10">
+                <form className="w-full py-4 flex flex-col gap-10">
                     <LoginInput type="text" label="Username" value={formValue.username} onChange={handleChange('username')}/>
 
                     <LoginInput type="password" label="Password" value={formValue.password} onChange={handleChange('password')}/>
 
                     <Button type="primary" onClick={handleSubmit}>Log in</Button>
-                </div>
+                </form>
 
                 <p className="text-center text-gray-500">Don&apos;t have an account yet? <a href="/register" className="text-indigo-500">Register</a></p>
             </div>

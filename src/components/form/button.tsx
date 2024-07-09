@@ -3,6 +3,7 @@ interface ButtonProps {
     children: React.ReactNode;
     disabled?: boolean;
     loading?: boolean;
+    nativeType?: 'button' | 'submit' | 'reset';
     onClick: () => void;
 }
 
@@ -20,6 +21,7 @@ const disabledStyles = 'bg-gray-300 text-gray-500 cursor-not-allowed hover:bg-gr
 export default function Button(props: ButtonProps) {
     return (
         <button
+            type={props.nativeType ? props.nativeType : 'button'}
             className={`${styles[props.type]} ${props.disabled ? disabledStyles : ''}`}
             disabled={props.disabled}
             onClick={props.onClick}
