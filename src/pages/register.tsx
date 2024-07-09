@@ -1,5 +1,4 @@
 export default function Register() {
-
     return (
         <div className="w-screen h-screen bg-gradient-to-r from-[#f9c2ec] to-[#abc2ee] flex justify-center items-center">
 
