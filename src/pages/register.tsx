@@ -1,5 +1,6 @@
 import LoginInput from "@/components/form/login-input"
 import { useState } from "react"
+import Button from "@/components/form/button";
 
 export default function Register() {
     const [formValue, setFormValue] = useState({
@@ -8,6 +9,11 @@ export default function Register() {
         password: '',
         confirmPassword: ''
     });
+
+    // 注册事件
+    const handleSubmit = () => {
+        console.log(formValue);
+    };
 
     // 输入事件
     const handleChange = (fieldName: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +35,7 @@ export default function Register() {
 
                 <h1 className="text-6xl font-bold my-12 text-center">Register</h1>
 
-                <div className="w-full py-4 flex flex-col gap-10">
+                <form className="w-full py-4 flex flex-col gap-10">
                     <LoginInput type="text" label="Name" value={formValue.name} onChange={handleChange('name')}/>
 
                     <LoginInput type="text" label="Username" value={formValue.username} onChange={handleChange('username')}/>
@@ -38,8 +44,8 @@ export default function Register() {
 
                     <LoginInput type="password" label="Confirm Password" value={formValue.confirmPassword} onChange={handleChange('confirmPassword')} />
 
-                    <button className="btn-primary">Sign Up</button>
-                </div>
+                    <Button type="primary" onClick={handleSubmit}>Sign Up</Button>
+                </form>
             </div>
         </div>
     )

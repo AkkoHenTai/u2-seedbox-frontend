@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LoginInput from "@/components/form/login-input";
+import Button from "@/components/form/button";
 
 export default function Login() {
     const [formValue, setFormValue] = useState({
@@ -27,7 +28,7 @@ export default function Login() {
 
                     <LoginInput type="password" label="Password" value={formValue.password} onChange={handleChange('password')}/>
 
-                    <button className="btn-primary" onClick={handleSubmit}>Log in</button>
+                    <Button type="primary" onClick={handleSubmit}>Log in</Button>
                 </div>
 
                 <p className="text-center text-gray-500">Don&apos;t have an account yet? <a href="/register" className="text-indigo-500">Register</a></p>
