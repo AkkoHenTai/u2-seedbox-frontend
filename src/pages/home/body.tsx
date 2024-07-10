@@ -51,7 +51,32 @@ export default function Body() {
             name: 'Home3',
             link: '/home',
             icon: <Home />,
-            color: '#0eb83a'
+            color: '#0eb83a',
+            childItems: [
+                {
+                    index: '2-1',
+                    name: 'Home1-1',
+                    link: '/home2',
+                    icon: <Home />,
+                    color: '#FF0000',
+                    childItems: [
+                        {
+                            index: '2-1-1',
+                            name: 'Home1-1-1',
+                            link: '/home2',
+                            icon: <Home />,
+                            color: '#FF0000'
+                        },
+                        {
+                            index: '2-1-2',
+                            name: 'Home1-1-2',
+                            link: '/home2',
+                            icon: <Home />,
+                            color: '#FF0000'
+                        }
+                    ]
+                }
+            ],
         }
     ];
 

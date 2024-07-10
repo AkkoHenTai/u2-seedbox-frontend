@@ -18,18 +18,18 @@ export default function SidebarItem(props: SidebarItemProps) {
     const [items, setItems] = useState<SidebarItemProps[]>([]);
     const [isExpanded, setIsExpanded] = useState(props.isExpanded !== undefined ? props.isExpanded : false);
 
+    // 初始化 items，只在 props 改变时执行
     useEffect(() => {
+        // 更改一级菜单时关闭二级菜单
         props.active ? setIsExpanded(true) : setIsExpanded(false);
-    }, [props]);
 
-    // 初始化 items，只在 props.childItems 改变时执行
-    useEffect(() => {
-        if (props.childItems) {
+        // 初始化二级菜单
+        if (props.active && props.childItems) {
             const initializedItems = updateItems(props.childItems);
             setItems(initializedItems);
-            console.log('updateItems', initializedItems);
         }
-    }, [props.childItems]);
+    }, [props]);
+
 
     const handleSetActive = (index: number) => {
         setItems(prevItems => {
@@ -37,7 +37,6 @@ export default function SidebarItem(props: SidebarItemProps) {
                 ...item,
                 active: i === index,
             }));
-            console.log('handleSetActive', newItems);
             return newItems;
         });
     };
