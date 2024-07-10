@@ -20,16 +20,18 @@ export default function SidebarItem(props: SidebarItemProps) {
 
     // 初始化 items，只在 props 改变时执行
     useEffect(() => {
-        // 更改一级菜单时关闭二级菜单
-        props.active ? setIsExpanded(true) : setIsExpanded(false);
-
-        // 初始化二级菜单
-        if (props.active && props.childItems) {
+        if (props.childItems) {
             const initializedItems = updateItems(props.childItems);
             setItems(initializedItems);
         }
-    }, [props]);
+    }, [props.childItems]);
 
+    useEffect(() => {
+        // 更改一级菜单时关闭二级菜单
+        if (!props.active) {
+            setIsExpanded(false);
+        }
+    }, [props.active]);
 
     const handleSetActive = (index: number) => {
         setItems(prevItems => {
@@ -41,14 +43,16 @@ export default function SidebarItem(props: SidebarItemProps) {
         });
     };
 
+    const handleClick = () => {
+        if (props.onClick) props.onClick();
+        if (props.setActive) props.setActive(!props.active);
+        if (props.childItems) setIsExpanded(!isExpanded);
+    };
+
     return (
         <div>
             <div
-                onClick={() => {
-                    if (props.onClick) props.onClick();
-                    if (props.setActive) props.setActive(!props.active);
-                    if (props.childItems) setIsExpanded(!isExpanded);
-                }}
+                onClick={handleClick}
                 className="flex justify-between p-2 rounded-lg hover:bg-[#f0f0f4]"
                 style={{ cursor: props.disabled ? 'not-allowed' : 'pointer', backgroundColor: props.active ? '#f0f0f4' : '', opacity: props.disabled ? 0.5 : 1 }}
             >
