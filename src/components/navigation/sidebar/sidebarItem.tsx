@@ -13,7 +13,7 @@ export default function SidebarItem(props: SidebarItemProps) {
     const handleClick = () => {
         if (props.onClick) props.onClick();
         if (props.setActive) props.setActive(props.index);
-        if (props.childItems) setIsExpanded(!isExpanded);
+        if (props.childItems && props.active) setIsExpanded(!isExpanded);
     };
 
     return (
