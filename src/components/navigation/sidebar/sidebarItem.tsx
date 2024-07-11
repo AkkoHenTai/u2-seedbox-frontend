@@ -18,29 +18,23 @@ export default function SidebarItem(props: SidebarItemProps) {
     const [items, setItems] = useState<SidebarItemProps[]>([]);
     const [isExpanded, setIsExpanded] = useState(props.isExpanded !== undefined ? props.isExpanded : false);
 
-    // 初始化 items，只在 props 改变时执行
     useEffect(() => {
         if (props.childItems) {
-            const initializedItems = updateItems(props.childItems);
-            setItems(initializedItems);
+            setItems(updateItems(props.childItems));
         }
     }, [props.childItems]);
 
     useEffect(() => {
-        // 更改一级菜单时关闭二级菜单
         if (!props.active) {
             setIsExpanded(false);
         }
     }, [props.active]);
 
     const handleSetActive = (index: number) => {
-        setItems(prevItems => {
-            const newItems = prevItems.map((item, i) => ({
-                ...item,
-                active: i === index,
-            }));
-            return newItems;
-        });
+        setItems(prevItems => prevItems.map((item, i) => ({
+            ...item,
+            active: i === index,
+        })));
     };
 
     const handleClick = () => {
@@ -56,13 +50,12 @@ export default function SidebarItem(props: SidebarItemProps) {
                 className="flex justify-between p-2 rounded-lg hover:bg-[#f0f0f4]"
                 style={{ cursor: props.disabled ? 'not-allowed' : 'pointer', backgroundColor: props.active ? '#f0f0f4' : '', opacity: props.disabled ? 0.5 : 1 }}
             >
-                <div className="flex items-center gap-3 ">
+                <div className="flex items-center gap-3">
                     <div className="size-8 bg-[#bacac6] p-1 rounded-lg" style={{ backgroundColor: props.active ? props.color : '' }}>
                         <i style={{ color: props.active ? 'white' : '#88ada6' }}>{props.icon}</i>
                     </div>
                     <span className="text-sm">{props.name}</span>
                 </div>
-
                 {props.childItems && (
                     <i className="flex justify-center items-center">
                         <svg

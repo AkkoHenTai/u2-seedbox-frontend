@@ -1,14 +1,13 @@
 import { SidebarItemProps, SidebarProps } from "./types";
-import SidebarItem from "./sidebarItem";
+import SidebarItem from "./sidebarItem.tsx";
 import { useState } from "react";
 
-export default function Sidebar(props: SidebarProps) {
-    const [items, setItems] = useState(props.items.map((item, index) => ({
+export default function Sidebar({ items: initialItems, textColor, bgColor }: SidebarProps) {
+    const [items, setItems] = useState(initialItems.map((item, index) => ({
         ...item,
         active: index === 0,
     })));
 
-    // 激活被点击的子菜单
     const handleSetActive = (index: number) => {
         setItems(items.map((item, i) => ({
             ...item,
@@ -17,7 +16,7 @@ export default function Sidebar(props: SidebarProps) {
     };
 
     return (
-        <div className="w-full h-full pl-5 flex flex-col gap-5 select-none text-nowrap text-ellipsis">
+        <div className="w-full h-full pl-5 flex flex-col gap-5 select-none text-nowrap text-ellipsis" style={{ color: textColor, backgroundColor: bgColor }}>
             {items.map((item, index) => (
                 <SidebarItem
                     key={item.index}
@@ -26,5 +25,5 @@ export default function Sidebar(props: SidebarProps) {
                 />
             ))}
         </div>
-    )
+    );
 }
