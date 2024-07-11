@@ -30,7 +30,10 @@ export default function SidebarItem(props: SidebarItemProps) {
                     <span className="text-sm">{props.name}</span>
                 </div>
                 {props.childItems && (
-                    <i className="flex justify-center items-center">
+                    <i className="flex justify-center items-center" onClick={(e) => {
+                        e.stopPropagation();
+                        setIsExpanded(!isExpanded);
+                    }}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
