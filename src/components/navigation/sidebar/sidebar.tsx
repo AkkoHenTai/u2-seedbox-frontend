@@ -88,10 +88,15 @@ const updateActiveChildItem = (items: SidebarItemProps[]): SidebarItemProps[] =>
     // 第一个子元素没有孩子，就选中该子元素
     items = items.map((item, index) => {
         if (index === 0) {
-            if (item.childItems) {
-                item.childItems = updateActiveChildItem(item.childItems);
+            // 如果其他子元素有active为true的，那么第一个子元素的active就为fasle
+            if (items.some(child => child.active)) {
+                item.active = false;
+            }else{
+                if (item.childItems) {
+                    item.childItems = updateActiveChildItem(item.childItems);
+                }
+                item.active = true;
             }
-            item.active = true;
         }
         return item;
     });
