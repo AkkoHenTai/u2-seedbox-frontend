@@ -23,7 +23,7 @@ export default function Sidebar({ items: initialItems, textColor, bgColor }: Sid
     };
 
     return (
-        <div className="w-full h-full pl-5 flex flex-col gap-5 select-none text-nowrap text-ellipsis" style={{ color: textColor, backgroundColor: bgColor }}>
+        <div className="w-full h-full flex flex-col gap-5 select-none text-nowrap text-ellipsis" style={{ color: textColor, backgroundColor: bgColor }}>
             {items.map((item) => (
                 <SidebarItem
                     key={item.index}
