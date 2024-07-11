@@ -106,7 +106,7 @@ export default function Body() {
 
     return (
         <div className='w-screen h-screen flex flex-row mt-[200px]'>
-            <div className="w-52 ">
+            <div className="w-52 shrink-0">
                 <Sidebar items={sidebars} />
             </div>
 
