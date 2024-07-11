@@ -1,45 +1,18 @@
 import { useEffect, useState } from "react";
 import { SidebarItemProps } from "./types";
 
-const updateItems = (items: SidebarItemProps[]): SidebarItemProps[] => {
-    return items.map((item, index) => {
-        if (item.childItems) {
-            item.isExpanded = true;
-            item.childItems = updateItems(item.childItems);
-        }
-        return {
-            ...item,
-            active: index === 0
-        };
-    });
-};
-
 export default function SidebarItem(props: SidebarItemProps) {
-    const [items, setItems] = useState<SidebarItemProps[]>([]);
     const [isExpanded, setIsExpanded] = useState(props.isExpanded !== undefined ? props.isExpanded : false);
 
     useEffect(() => {
-        if (props.childItems) {
-            setItems(updateItems(props.childItems));
-        }
-    }, [props.childItems]);
-
-    useEffect(() => {
-        if (!props.active) {
-            setIsExpanded(false);
+        if (props.active) {
+            setIsExpanded(true);
         }
     }, [props.active]);
 
-    const handleSetActive = (index: number) => {
-        setItems(prevItems => prevItems.map((item, i) => ({
-            ...item,
-            active: i === index,
-        })));
-    };
-
     const handleClick = () => {
         if (props.onClick) props.onClick();
-        if (props.setActive) props.setActive(!props.active);
+        if (props.setActive) props.setActive(props.index);
         if (props.childItems) setIsExpanded(!isExpanded);
     };
 
@@ -71,9 +44,9 @@ export default function SidebarItem(props: SidebarItemProps) {
                     </i>
                 )}
             </div>
-            {props.childItems && isExpanded && items.map((item, index) => (
+            {props.childItems && isExpanded && props.childItems.map((item) => (
                 <div key={item.index} className="ml-5 mt-2">
-                    <SidebarItem {...item} setActive={() => handleSetActive(index)} />
+                    <SidebarItem {...item} setActive={props.setActive} />
                 </div>
             ))}
         </div>

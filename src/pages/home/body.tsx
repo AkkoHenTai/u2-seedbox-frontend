@@ -5,37 +5,37 @@ import { SidebarItemProps } from "@/components/navigation/sidebar/types";
 export default function Body() {
     const sidebars = [
         {
-            index: '0',
+            index: '1',
             name: 'Home1',
-            link: '/home',
+            link: '/home1',
             icon: <Home />,
             color: '#FF0000'
         },
         {
-            index: '1',
+            index: '2',
             name: 'Home2',
-            link: '/home',
+            link: '/home2',
             icon: <Home />,
             color: '#70f3ff',
             childItems: [
                 {
-                    index: '1-1',
-                    name: 'Home1-1',
-                    link: '/home2',
+                    index: '2-1',
+                    name: 'Home2-1',
+                    link: '/home2-1',
                     icon: <Home />,
                     color: '#FF0000',
                     childItems: [
                         {
-                            index: '1-1-1',
-                            name: 'Home1-1-1',
-                            link: '/home2',
+                            index: '2-1-1',
+                            name: 'Home2-1-1',
+                            link: '/home2-1-1',
                             icon: <Home />,
                             color: '#FF0000'
                         },
                         {
-                            index: '1-1-2',
-                            name: 'Home1-1-2',
-                            link: '/home2',
+                            index: '2-1-2',
+                            name: 'Home2-1-2',
+                            link: '/home2-1-2',
                             icon: <Home />,
                             color: '#FF0000'
                         }
@@ -47,30 +47,53 @@ export default function Body() {
             }
         },
         {
-            index: '2',
+            index: '3',
             name: 'Home3',
-            link: '/home',
+            link: '/home3',
             icon: <Home />,
             color: '#0eb83a',
             childItems: [
                 {
-                    index: '2-1',
-                    name: 'Home1-1',
-                    link: '/home2',
+                    index: '3-1',
+                    name: 'Home3-1',
+                    link: '/home3-1',
                     icon: <Home />,
                     color: '#FF0000',
                     childItems: [
                         {
-                            index: '2-1-1',
-                            name: 'Home1-1-1',
-                            link: '/home2',
+                            index: '3-1-1',
+                            name: 'Home3-1-1',
+                            link: '/home3-1-1',
                             icon: <Home />,
                             color: '#FF0000'
                         },
                         {
-                            index: '2-1-2',
-                            name: 'Home1-1-2',
-                            link: '/home2',
+                            index: '3-1-2',
+                            name: 'Home3-1-2',
+                            link: '/home3-1-2',
+                            icon: <Home />,
+                            color: '#FF0000'
+                        }
+                    ]
+                },
+                {
+                    index: '3-2',
+                    name: 'Home3-2',
+                    link: '/home3-2',
+                    icon: <Home />,
+                    color: '#FF0000',
+                    childItems: [
+                        {
+                            index: '3-2-1',
+                            name: 'Home3-2-1',
+                            link: '/home3-2-1',
+                            icon: <Home />,
+                            color: '#FF0000'
+                        },
+                        {
+                            index: '3-2-2',
+                            name: 'Home3-2-2',
+                            link: '/home3-2-2',
                             icon: <Home />,
                             color: '#FF0000'
                         }
@@ -79,6 +102,7 @@ export default function Body() {
             ],
         }
     ];
+
 
     return (
         <div className='w-screen h-screen flex flex-row mt-[200px]'>

@@ -9,7 +9,7 @@ export interface SidebarItemProps {
     onClick?: () => void;
 
     active?: boolean;
-    setActive?: (active: boolean) => void;
+    setActive?: (active: string) => void;
     isExpanded?: boolean;
 }
 
