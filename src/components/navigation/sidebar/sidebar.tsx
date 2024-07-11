@@ -83,11 +83,18 @@ const updateActiveStatus = (items: SidebarItemProps[], targetIndex: string): Sid
 
 // 递归更新被点击元素的childItems中第一个元素的状态
 const updateActiveChildItem = (items: SidebarItemProps[]): SidebarItemProps[] => {
-    return items.map((item, index) => {
-        item = { ...item, active: index === 0 };
-        if (item.childItems) {
-            item.childItems = updateActiveChildItem(item.childItems);
-        };
+    // 只需要关心更改第一个子元素的状态
+    // 第一个子元素有孩子，就选中该子元素，然后递归他的第一个子元素的子元素
+    // 第一个子元素没有孩子，就选中该子元素
+    items = items.map((item, index) => {
+        if (index === 0) {
+            if (item.childItems) {
+                item.childItems = updateActiveChildItem(item.childItems);
+            }
+            item.active = true;
+        }
         return item;
-    });;
+    });
+
+    return items;
 };
