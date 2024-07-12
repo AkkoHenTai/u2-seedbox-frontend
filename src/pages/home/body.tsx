@@ -6,107 +6,65 @@ export default function Body() {
     const sidebars = [
         {
             index: '1',
-            name: 'Home1',
-            link: '/home1',
+            name: '下载器',
+            link: '',
             icon: <Home />,
-            color: '#FF0000'
+            color: '#FF0000',
+            childItems: [
+                {
+                    index: '1-1',
+                    name: '下载器配置',
+                    link: '',
+                    icon: <Home />,
+                    color: '#FF0000',
+                }
+            ]
         },
         {
             index: '2',
-            name: 'Home2',
-            link: '/home2',
+            name: 'U2',
+            link: '',
             icon: <Home />,
-            color: '#70f3ff',
+            color: '#FF0000',
             childItems: [
                 {
                     index: '2-1',
-                    name: 'Home2-1',
-                    link: '/home2-1',
+                    name: 'U2配置',
+                    link: '',
                     icon: <Home />,
                     color: '#FF0000',
-                    childItems: [
-                        {
-                            index: '2-1-1',
-                            name: 'Home2-1-1',
-                            link: '/home2-1-1',
-                            icon: <Home />,
-                            color: '#FF0000'
-                        },
-                        {
-                            index: '2-1-2',
-                            name: 'Home2-1-2',
-                            link: '/home2-1-2',
-                            icon: <Home />,
-                            color: '#FF0000'
-                        }
-                    ]
+                },
+                {
+                    index: '2-2',
+                    name: '刷流',
+                    link: '',
+                    icon: <Home />,
+                    color: '#FF0000',
+                },
+                {
+                    index: '2-3',
+                    name: '日志',
+                    link: '',
+                    icon: <Home />,
+                    color: '#FF0000',
                 }
-            ],
-            onClick: () => {
-                console.log('click');
-            }
+            ]
         },
         {
             index: '3',
-            name: 'Home3',
-            link: '/home3',
+            name: '个人中心',
+            link: '',
             icon: <Home />,
-            color: '#0eb83a',
-            childItems: [
-                {
-                    index: '3-1',
-                    name: 'Home3-1',
-                    link: '/home3-1',
-                    icon: <Home />,
-                    color: '#FF0000',
-                    childItems: [
-                        {
-                            index: '3-1-1',
-                            name: 'Home3-1-1',
-                            link: '/home3-1-1',
-                            icon: <Home />,
-                            color: '#FF0000'
-                        },
-                        {
-                            index: '3-1-2',
-                            name: 'Home3-1-2',
-                            link: '/home3-1-2',
-                            icon: <Home />,
-                            color: '#FF0000'
-                        }
-                    ]
-                },
-                {
-                    index: '3-2',
-                    name: 'Home3-2',
-                    link: '/home3-2',
-                    icon: <Home />,
-                    color: '#FF0000',
-                    childItems: [
-                        {
-                            index: '3-2-1',
-                            name: 'Home3-2-1',
-                            link: '/home3-2-1',
-                            icon: <Home />,
-                            color: '#FF0000'
-                        },
-                        {
-                            index: '3-2-2',
-                            name: 'Home3-2-2',
-                            link: '/home3-2-2',
-                            icon: <Home />,
-                            color: '#FF0000'
-                        }
-                    ]
-                }
-            ],
+            color: '#FF0000'
         }
     ];
 
 
     return (
-        <div className='w-screen h-screen flex flex-row mt-[200px]'>
-            <div className="w-52 shrink-0">
+        <div className='w-screen h-screen flex flex-row'>
+            <div className="w-52 h-full border-r-[1px] border-black/10 shrink-0 flex flex-col pl-5 pr-2">
+                <div className="w-full h-20 flex justify-center items-center">Logo</div>
+
                 <Sidebar items={sidebars} />
             </div>
 
