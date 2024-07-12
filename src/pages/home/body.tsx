@@ -1,6 +1,7 @@
 import Sidebar from "@/components/navigation/sidebar/sidebar";
 import Home from "@/assets/icons/home.svg?react";
 import { SidebarItemProps } from "@/components/navigation/sidebar/types";
+import { Outlet } from "react-router-dom";
 
 export default function Body() {
     const sidebars = [
@@ -30,7 +31,7 @@ export default function Body() {
                 {
                     index: '2-1',
                     name: 'U2配置',
-                    link: '',
+                    link: '/U2/setting',
                     icon: <Home />,
                     color: '#FF0000',
                 },
@@ -68,7 +69,8 @@ export default function Body() {
                 <Sidebar items={sidebars} />
             </div>
 
-            <div className='w-full h-full'>
+            <div className='w-full h-full p-5'>
+                <Outlet />
             </div>
         </div>
     );

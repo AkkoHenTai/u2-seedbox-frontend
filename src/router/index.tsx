@@ -1,5 +1,5 @@
 import React from "react";
-import { useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes } from 'react-router-dom';
 
 // 登录页
 const Login = React.lazy(() => import('../pages/login'));
@@ -9,10 +9,21 @@ const Register = React.lazy(() => import('../pages/register'));
 // 主页
 const HomeBody = React.lazy(() => import('../pages/home/body'));
 
+// U2
+const U2Setting = React.lazy(() => import('../pages/u2/setting'));
+
 const routes = [
+    { path: '/', element: <Navigate to="/home" /> },
+    { path: '/U2', element: <Navigate to="/U2/setting" /> },
     {
         path: '/',
-        element: <HomeBody />
+        element: <HomeBody />,
+        children: [
+            {
+                path: '/U2/setting',
+                element: <U2Setting />
+            }
+        ]
     },
     {
         path: '/login',
