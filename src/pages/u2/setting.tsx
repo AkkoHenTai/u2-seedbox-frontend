@@ -4,9 +4,9 @@ import { useState } from "react";
 
 export default function Setting() {
     const stepItems: StepItemProps[] = [
-        { title: '步骤一', subTitle: '这是一段描述', status: 'finish' },
-        { title: '步骤二', subTitle: '这是一段描述', status: 'finish' },
-        { title: '步骤二', subTitle: '这是一段描述', status: 'finish' }
+        { title: '获取Key', subTitle: '' },
+        { title: '绑定Key', subTitle: '' },
+        { title: '获取Token', subTitle: '' }
     ];
 
     const [current, setCurrent] = useState(0);
@@ -17,8 +17,12 @@ export default function Setting() {
     };
 
     return (
-        <div className="">
-            <Steps items={stepItems} direction="horizontal" current={current} onChange={handleChange} />
+        <div className="w-full h-full">
+            <div className="text-2xl font-bold">U2配置</div>
+            <span>用于配置U2 id、Key以及Token</span>
+            <div className="flex flex-col items-center">
+                <Steps items={stepItems} direction="horizontal" current={current} onChange={handleChange} />
+            </div>
         </div>
     )
 }

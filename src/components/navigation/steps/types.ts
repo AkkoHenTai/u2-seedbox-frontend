@@ -10,9 +10,9 @@ export interface StepsProps {
 export interface StepItemProps {
     title: string; // 标题
     subTitle: string; // 子标题
-    status: 'wait' | 'process' | 'finish' | 'error'; // 状态
 
-
+    
+    status?: 'wait' | 'process' | 'finish' | 'error'; // 状态
     index?: number; // 步骤序号
     length?: number; // 步骤总数
     direction?: 'horizontal' | 'vertical'; // 步骤条方向, 水平（horizontal）和竖直（vertical）
