@@ -19,4 +19,7 @@ export interface StepItemProps {
     disabled?: boolean; // 是否禁用
     // description?: string; // 描述(可选)
     icon?: JSX.Element; // 图标(可选)
+    current?: number; // 当前步骤
+
+    onClick?: () => void;
 }

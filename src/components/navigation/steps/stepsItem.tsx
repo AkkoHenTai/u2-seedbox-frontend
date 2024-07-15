@@ -1,8 +1,11 @@
 import { StepItemProps } from "./types";
 
-export default function StepsItem({ disabled = false, direction, index, length, title, subTitle }: StepItemProps) {
+export default function StepsItem({ disabled = false, direction, index, length, title, subTitle, current, onClick }: StepItemProps) {
     return (
-        <div className={`flex ${direction === 'horizontal' ? 'flex-col' : ''} ${disabled ? 'opacity-50' : ''} items-center gap-2 relative`}>
+        <div
+            className={`flex ${direction === 'horizontal' ? 'flex-col' : ''} ${disabled ? 'opacity-50' : ''} items-center gap-2 relative cursor-pointer`}
+            onClick={() => onClick && onClick()}
+        >
             <div className="w-8 h-8 text-xs rounded-full flex justify-center items-center bg-[#1677ff] text-white relative z-20">
                 {index !== undefined ? index + 1 : ''}
             </div>
@@ -11,8 +14,9 @@ export default function StepsItem({ disabled = false, direction, index, length, 
                 <span>{subTitle}</span>
             </div>
             {length !== undefined && index !== undefined && index + 1 !== length && (
-                <div className="w-32 h-1 absolute top-4 left-16 z-10 px-5 box-border">
-                    <div className="bg-[#1677ff] w-full h-full"></div>
+                <div className="w-20 h-1 absolute top-4 left-16 z-10 mx-6">
+                    <div className="bg-[#1677ff]/30 w-full h-full"></div>
+                    <div className={`bg-[#1677ff] ${current !== undefined && current > index ? 'w-20' : 'w-0'}  h-full absolute left-0 top-0 transition-all`}></div>
                 </div>
             )}
         </div>
