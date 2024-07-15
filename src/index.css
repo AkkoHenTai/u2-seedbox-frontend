@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: '未来圆SC';
+    src: url('/public/fonts/未来圆SC-Rgulr.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    @apply font-future-sc;
+}

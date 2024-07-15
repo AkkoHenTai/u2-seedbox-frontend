@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'future-sc': ['未来圆SC', 'sans-serif'], // 这里'future-sc'是自定义的名字
+      },
+    },
   },
   plugins: [],
 }
