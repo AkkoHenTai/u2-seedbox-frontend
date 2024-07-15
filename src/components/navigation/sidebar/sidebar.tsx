@@ -26,7 +26,7 @@ export default function Sidebar({ items: initialItems, textColor, bgColor }: Sid
         <div className="w-full h-full flex flex-col gap-5 select-none text-nowrap text-ellipsis" style={{ color: textColor, backgroundColor: bgColor }}>
             {items.map((item) => (
                 <SidebarItem
-                    key={item.index}
+                    key={item.uniqueKey}
                     {...item}
                     setActive={(indexPath) => handleSetActive(indexPath)}
                 />
@@ -43,7 +43,7 @@ const updateActiveStatus = (items: SidebarItemProps[], targetIndex: string): Sid
     // 更新被点击的菜单及其子菜单的active状态
     const updatedItems = items.map(item => {
         let isActive = false;
-        if (item.index === targetIndex) {
+        if (item.uniqueKey === targetIndex) {
             // 如果是被点击的菜单，将其设置为active状态，并标记该菜单为被点击的元素
             isActive = true;
             found = true;

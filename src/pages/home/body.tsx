@@ -6,14 +6,14 @@ import { Outlet } from "react-router-dom";
 export default function Body() {
     const sidebars = [
         {
-            index: '1',
+            uniqueKey: '1',
             name: '下载器',
             link: '',
             icon: <Home />,
             color: '#FF0000',
             childItems: [
                 {
-                    index: '1-1',
+                    uniqueKey: '1-1',
                     name: '下载器配置',
                     link: '',
                     icon: <Home />,
@@ -22,28 +22,28 @@ export default function Body() {
             ]
         },
         {
-            index: '2',
+            uniqueKey: '2',
             name: 'U2',
             link: '',
             icon: <Home />,
             color: '#FF0000',
             childItems: [
                 {
-                    index: '2-1',
+                    uniqueKey: '2-1',
                     name: 'U2配置',
                     link: '/U2/setting',
                     icon: <Home />,
                     color: '#FF0000',
                 },
                 {
-                    index: '2-2',
+                    uniqueKey: '2-2',
                     name: '刷流',
                     link: '',
                     icon: <Home />,
                     color: '#FF0000',
                 },
                 {
-                    index: '2-3',
+                    uniqueKey: '2-3',
                     name: '日志',
                     link: '',
                     icon: <Home />,
@@ -52,7 +52,7 @@ export default function Body() {
             ]
         },
         {
-            index: '3',
+            uniqueKey: '3',
             name: '个人中心',
             link: '',
             icon: <Home />,

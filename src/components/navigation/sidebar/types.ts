@@ -1,5 +1,5 @@
 export interface SidebarItemProps {
-    index: string;
+    uniqueKey: string;
     name: string;
     link: string;
     icon: JSX.Element;

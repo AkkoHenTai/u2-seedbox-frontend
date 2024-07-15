@@ -12,7 +12,7 @@ export default function SidebarItem(props: SidebarItemProps) {
 
     const handleClick = () => {
         if (props.onClick) props.onClick();
-        if (props.setActive) props.setActive(props.index);
+        if (props.setActive) props.setActive(props.uniqueKey);
         if (props.childItems && props.active) setIsExpanded(!isExpanded);
     };
 
@@ -48,7 +48,7 @@ export default function SidebarItem(props: SidebarItemProps) {
                 )}
             </div>
             {props.childItems && isExpanded && props.childItems.map((item) => (
-                <div key={item.index} className="ml-5 mt-2">
+                <div key={item.uniqueKey} className="ml-5 mt-2">
                     <SidebarItem {...item} setActive={props.setActive} />
                 </div>
             ))}
