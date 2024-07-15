@@ -2,7 +2,7 @@ import { SidebarItemProps, SidebarProps } from "./types";
 import SidebarItem from "./sidebarItem";
 import { useEffect, useState } from "react";
 
-export default function Sidebar({ items: initialItems, textColor, bgColor }: SidebarProps) {
+export default function Sidebar({ items: initialItems, textColor, bgColor, onChange}: SidebarProps) {
     const [items, setItems] = useState(initialItems);
 
     // 模拟初始化生命周期钩子，初始化时第一个元素默认被选中
@@ -17,9 +17,12 @@ export default function Sidebar({ items: initialItems, textColor, bgColor }: Sid
 
 
     // 更新被点击的菜单及其子菜单的active状态
-    const handleSetActive = (indexPath: string) => {
-        const updatedItems = updateActiveStatus(items, indexPath);
+    const handleSetActive = (uniqueKey: string) => {
+        const updatedItems = updateActiveStatus(items, uniqueKey);
         setItems(updatedItems);
+
+        // 返回被点击元素的uniqueKey给父组件
+        onChange?.(uniqueKey);
     };
 
     return (
@@ -28,7 +31,7 @@ export default function Sidebar({ items: initialItems, textColor, bgColor }: Sid
                 <SidebarItem
                     key={item.uniqueKey}
                     {...item}
-                    setActive={(indexPath) => handleSetActive(indexPath)}
+                    setActive={(uniqueKey) => handleSetActive(uniqueKey)}
                 />
             ))}
         </div>

@@ -4,9 +4,11 @@ export interface SidebarItemProps {
     link: string;
     icon: JSX.Element;
     color: string;
+
+
     childItems?: SidebarItemProps[];
     disabled?: boolean;
-    onClick?: () => void;
+    onClick?: (key: string) => void;
 
     active?: boolean;
     setActive?: (active: string) => void;
@@ -15,6 +17,8 @@ export interface SidebarItemProps {
 
 export interface SidebarProps {
     items: SidebarItemProps[];
+    
     textColor?: string;
     bgColor?: string;
+    onChange?: (key: string) => void;
 }

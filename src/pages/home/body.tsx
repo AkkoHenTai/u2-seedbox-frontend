@@ -61,12 +61,15 @@ export default function Body() {
     ];
 
 
+    const handleSidebarOnChange = (uniqueKey: string) => {
+    }
+
     return (
         <div className='w-screen h-screen flex flex-row'>
             <div className="w-52 h-full border-r-[1px] border-black/10 shrink-0 flex flex-col pl-5 pr-2">
                 <div className="w-full h-20 flex justify-center items-center">Logo</div>
 
-                <Sidebar items={sidebars} />
+                <Sidebar items={sidebars} onChange={handleSidebarOnChange}/>
             </div>
 
             <div className='w-full h-full p-5'>
