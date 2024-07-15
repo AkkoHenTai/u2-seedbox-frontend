@@ -18,8 +18,6 @@ export default function Setting() {
 
     return (
         <div className="w-full h-full">
-            <div className="text-2xl font-bold">U2配置</div>
-            <span>用于配置U2 id、Key以及Token</span>
             <div className="flex flex-col items-center">
                 <Steps items={stepItems} direction="horizontal" current={current} onChange={handleChange} />
             </div>
