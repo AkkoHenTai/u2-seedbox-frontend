@@ -87,9 +87,11 @@ export default function Body() {
                 <Sidebar items={sidebars} onChange={handleSidebarOnChange} />
             </div>
 
-            <div className='w-full h-full p-5'>
+            <div className='grow p-5 flex flex-col'>
                 <div className="text-2xl font-bold">{title}</div>
-                <Outlet />
+                <div className="grow">
+                    <Outlet />
+                </div>
             </div>
         </div>
     );
