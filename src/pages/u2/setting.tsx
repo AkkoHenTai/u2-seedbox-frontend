@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Setting() {
     const stepItems: StepItemProps[] = [
-        { title: '获取Key', subTitle: '' },
+        { title: '获取Key', subTitle: 'ddddasddddasddddasddddasddddasddddasddddasddddasddddas' },
         { title: '绑定Key', subTitle: '' },
         { title: '获取Token', subTitle: '' }
     ];
@@ -20,6 +20,11 @@ export default function Setting() {
         <div className="w-full h-full">
             <div className="flex flex-col items-center">
                 <Steps items={stepItems} direction="horizontal" current={current} onChange={handleChange} />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <Steps items={stepItems} direction="vertical" current={current} onChange={handleChange} />
             </div>
         </div>
     )

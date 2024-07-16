@@ -9,7 +9,7 @@ export default function Steps({ direction = 'horizontal', current = 0, items, on
     };
 
     return (
-        <div className={`flex ${direction === 'vertical' ? 'flex-col' : ''} relative overflow-hidden`}>
+        <div className={`flex ${direction === 'vertical' ? 'flex-col' : ''} relative`}>
             {items.map((item, index) => (
                 <StepsItem
                     direction={direction}
