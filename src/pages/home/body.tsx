@@ -88,8 +88,8 @@ export default function Body() {
             </div>
 
             <div className='grow p-5 flex flex-col'>
-                <div className="text-2xl font-bold">{title}</div>
-                <div className="grow">
+                <div className="text-2xl font-bold pb-3 border-b-[0.5px] border-gray-200">{title}</div>
+                <div className="grow px-16 py-8">
                     <Outlet />
                 </div>
             </div>
