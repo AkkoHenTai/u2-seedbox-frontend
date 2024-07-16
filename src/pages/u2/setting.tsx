@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Setting() {
     const stepItems: StepItemProps[] = [
-        { title: '获取Key', subTitle: 'ddddasddddasddddasddddasddddasddddasddddasddddasddddas' },
+        { title: '获取Key', subTitle: 'ddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddasddddas' },
         { title: '绑定Key', subTitle: '' },
         { title: '获取Token', subTitle: '' }
     ];

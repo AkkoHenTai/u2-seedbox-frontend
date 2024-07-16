@@ -15,7 +15,7 @@ export default function StepsItem({ disabled = false, direction, index, length, 
 
             <div className={`flex flex-col ${direction === 'horizontal' ? 'items-center gap-2' : ''} text-xs w-32`}>
                 <span className={`${direction === 'horizontal' ? '' : 'h-8 leading-8'}`}>{title}</span>
-                <span className={`break-words ${direction === 'horizontal' ? 'w-full' : ''}`}>{subTitle}</span>
+                <span className={`break-words max-h-16 overflow-hidden ${direction === 'horizontal' ? 'w-full' : ''}`}>{subTitle}</span>
             </div>
             {length !== undefined && index !== undefined && index + 1 !== length && (
                 direction === 'horizontal' ? (
