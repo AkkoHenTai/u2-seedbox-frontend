@@ -10,7 +10,8 @@ const Register = React.lazy(() => import('../pages/register'));
 const HomeBody = React.lazy(() => import('../pages/home/body'));
 
 // U2
-const U2Setting = React.lazy(() => import('../pages/u2/setting'));
+const U2Setting = React.lazy(() => import('../pages/u2/setting')); // 设置
+const U2Subscribe = React.lazy(() => import('../pages/u2/subscribe')); // 订阅
 
 const routes = [
     { path: '/', element: <Navigate to="/home" /> },
@@ -22,6 +23,10 @@ const routes = [
             {
                 path: '/U2/setting',
                 element: <U2Setting />
+            },
+            {
+                path: '/U2/subscribe',
+                element: <U2Subscribe />
             }
         ]
     },

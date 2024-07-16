@@ -1,12 +1,13 @@
 import { SidebarItemProps, SidebarProps } from "./types";
 import SidebarItem from "./sidebarItem";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Sidebar({ items: initialItems, textColor, bgColor, onChange }: SidebarProps) {
     const [items, setItems] = useState(initialItems);
     const location = useLocation();
     const { pathname } = location;
+    const navigate = useNavigate();
 
     // 更新被点击的菜单及其子菜单的active状态
     const handleSetActive = (uniqueKey: string) => {
@@ -15,6 +16,12 @@ export default function Sidebar({ items: initialItems, textColor, bgColor, onCha
 
         // 返回被点击元素的uniqueKey给父组件
         onChange?.(uniqueKey);
+
+        // 实现跳转到被点击的菜单的url
+        const targetItem = getClickedItem(updatedItems, uniqueKey);
+        if (targetItem && targetItem.link !== pathname) {
+            navigate(targetItem.link);
+        }
     };
 
     useEffect(() => {
@@ -125,3 +132,19 @@ const getActiveItem = (items: SidebarItemProps[], pathname: string): SidebarItem
     }
     return null;
 };
+
+// 获取被点击的菜单
+const getClickedItem = (items: SidebarItemProps[], targetIndex: string): SidebarItemProps | null => {
+    for (const item of items) {
+        if (item.uniqueKey === targetIndex) {
+            return item;
+        }
+        if (item.childItems) {
+            const clickedItem = getClickedItem(item.childItems, targetIndex);
+            if (clickedItem) {
+                return clickedItem;
+            }
+        }
+    }
+    return null;
+}

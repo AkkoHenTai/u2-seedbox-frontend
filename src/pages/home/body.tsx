@@ -38,8 +38,8 @@ export default function Body() {
                 },
                 {
                     uniqueKey: '2-2',
-                    name: '刷流',
-                    link: '',
+                    name: '订阅',
+                    link: '/U2/subscribe',
                     icon: <Home />,
                     color: '#FF0000',
                 },
