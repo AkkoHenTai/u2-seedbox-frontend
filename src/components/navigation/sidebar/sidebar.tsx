@@ -1,20 +1,12 @@
 import { SidebarItemProps, SidebarProps } from "./types";
 import SidebarItem from "./sidebarItem";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-export default function Sidebar({ items: initialItems, textColor, bgColor, onChange}: SidebarProps) {
+export default function Sidebar({ items: initialItems, textColor, bgColor, onChange }: SidebarProps) {
     const [items, setItems] = useState(initialItems);
-
-    // 模拟初始化生命周期钩子，初始化时第一个元素默认被选中
-    const init = () => {
-        useEffect(() => {
-            setItems(items.map((item, index) => ({ ...item, active: index === 0 })));
-        }, []);
-
-        return () => { };
-    };
-    init();
-
+    const location = useLocation();
+    const { pathname } = location;
 
     // 更新被点击的菜单及其子菜单的active状态
     const handleSetActive = (uniqueKey: string) => {
@@ -24,6 +16,17 @@ export default function Sidebar({ items: initialItems, textColor, bgColor, onCha
         // 返回被点击元素的uniqueKey给父组件
         onChange?.(uniqueKey);
     };
+
+    useEffect(() => {
+        // 初始化时第一个元素默认被选中
+        setItems(items.map((item, index) => ({ ...item, active: index === 0 })));
+
+        // 根据pathname选中菜单
+        const activeItem = getActiveItem(items, pathname);
+        if (activeItem) {
+            handleSetActive(activeItem.uniqueKey);
+        }
+    }, []);
 
     return (
         <div className="w-full h-full flex flex-col gap-5 select-none text-nowrap text-ellipsis" style={{ color: textColor, backgroundColor: bgColor }}>
@@ -94,7 +97,7 @@ const updateActiveChildItem = (items: SidebarItemProps[]): SidebarItemProps[] =>
             // 如果其他子元素有active为true的，那么第一个子元素的active就为fasle
             if (items.some(child => child.active)) {
                 item.active = false;
-            }else{
+            } else {
                 if (item.childItems) {
                     item.childItems = updateActiveChildItem(item.childItems);
                 }
@@ -105,4 +108,20 @@ const updateActiveChildItem = (items: SidebarItemProps[]): SidebarItemProps[] =>
     });
 
     return items;
+};
+
+// 递归获取当前url对应的菜单
+const getActiveItem = (items: SidebarItemProps[], pathname: string): SidebarItemProps | null => {
+    for (const item of items) {
+        if (item.link === pathname) {
+            return item;
+        }
+        if (item.childItems) {
+            const activeItem = getActiveItem(item.childItems, pathname);
+            if (activeItem) {
+                return activeItem;
+            }
+        }
+    }
+    return null;
 };
