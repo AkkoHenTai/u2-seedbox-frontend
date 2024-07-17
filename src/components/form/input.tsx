@@ -24,8 +24,8 @@ const Input: React.FC<InputProps> = ({
     type = 'input', value: propValue, placeholder, clearable = false, disabled = false, prefixIcon, suffixIcon, maxLength, minLength, iconColor = '#1677ff',
     onBlur, onFocus, onChange, onInput, onClear
 }) => {
+    // 输入框的值
     const [value, setValue] = useState(propValue);
-
     useEffect(() => {
         setValue(propValue);
     }, [propValue]);
@@ -41,6 +41,7 @@ const Input: React.FC<InputProps> = ({
         }
     }
 
+    // 输入事件
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
         if (onChange) {
@@ -48,8 +49,21 @@ const Input: React.FC<InputProps> = ({
         }
     }
 
+    // 焦点状态
+    const [isFocused, setIsFocused] = useState(false); 
+    // 获取焦点事件
+    const handleFocus = () => {
+        setIsFocused(true);
+        onFocus ? onFocus() : null;
+    }
+    // 失去焦点事件
+    const handleBlur = () => {
+        setIsFocused(false);
+        onBlur ? onBlur() : null;
+    }
+    
     return (
-        <div className="py-1 px-4 border-2 border-[#1677ff] rounded relative flex items-center">
+        <div className={`py-1 px-3 border-2 ${isFocused ? 'border-[#1677ff]' : 'border-[#1677ff]/20'} rounded relative flex items-center transition-all duration-200`}>
             {prefixIcon && (
                 <span className="mr-2 inline-flex items-center justify-center" style={{ width: '24px', height: '24px', color: iconColor }}>
                     {prefixIcon}
@@ -58,8 +72,8 @@ const Input: React.FC<InputProps> = ({
             <div className="flex items-center w-full">
                 <input
                     type={type} placeholder={placeholder} disabled={disabled} maxLength={maxLength} minLength={minLength} value={value}
-                    onChange={handleChange} onInput={onInput} onBlur={onBlur} onFocus={onFocus}
-                    className="bg-inherit flex-grow outline-none px-2 py-1"
+                    onChange={handleChange} onInput={onInput} onBlur={handleBlur} onFocus={handleFocus}
+                    className="bg-inherit flex-grow outline-none py-1"
                 />
                 {clearable && value && (
                     <span onClick={handleClear} className="text-2xl ml-2 text-gray-400 hover:text-gray-600 cursor-pointer">×</span>
