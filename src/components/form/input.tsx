@@ -9,6 +9,7 @@ interface InputProps {
     disabled?: boolean; // 是否禁用
     prefixIcon?: JSX.Element; // 前置图标
     suffixIcon?: JSX.Element; // 后置图标
+    iconColor?: string; // 图标颜色
     maxLength?: number; // 最大长度
     minLength?: number; // 最小长度 
 
@@ -20,7 +21,7 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({
-    type = 'input', value: propValue, placeholder, clearable = false, disabled = false, prefixIcon, suffixIcon, maxLength, minLength,
+    type = 'input', value: propValue, placeholder, clearable = false, disabled = false, prefixIcon, suffixIcon, maxLength, minLength, iconColor = '#1677ff',
     onBlur, onFocus, onChange, onInput, onClear
 }) => {
     const [value, setValue] = useState(propValue);
@@ -48,16 +49,28 @@ const Input: React.FC<InputProps> = ({
     }
 
     return (
-        <div className="py-1 px-4 border-2 border-[#1677ff] rounded relative">
-            <input 
-                type={type} placeholder={placeholder} disabled={disabled} maxLength={maxLength} minLength={minLength} value={value}
-                onChange={handleChange} onInput={onInput} onBlur={onBlur} onFocus={onFocus}
-                className="bg-inherit w-full h-full outline-none"
-            />
-
-            {clearable && value &&
-                <span onClick={handleClear} className="text-2xl absolute right-1 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer">×</span>
-            }
+        <div className="py-1 px-4 border-2 border-[#1677ff] rounded relative flex items-center">
+            {prefixIcon && (
+                <span className="mr-2 inline-flex items-center justify-center" style={{ width: '24px', height: '24px', color: iconColor }}>
+                    {prefixIcon}
+                </span>
+            )}
+            <div className="flex items-center w-full">
+                <input
+                    type={type} placeholder={placeholder} disabled={disabled} maxLength={maxLength} minLength={minLength} value={value}
+                    onChange={handleChange} onInput={onInput} onBlur={onBlur} onFocus={onFocus}
+                    className="bg-inherit flex-grow outline-none px-2 py-1"
+                    style={{ lineHeight: '1.5' }}
+                />
+                {clearable && value && (
+                    <span onClick={handleClear} className="text-2xl ml-2 text-gray-400 hover:text-gray-600 cursor-pointer">×</span>
+                )}
+            </div>
+            {suffixIcon && (
+                <span className="ml-2 inline-flex items-center justify-center" style={{ width: '24px', height: '24px', color: iconColor }}>
+                    {suffixIcon}
+                </span>
+            )}
         </div>
     );
 }

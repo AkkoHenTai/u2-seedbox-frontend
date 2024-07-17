@@ -2,6 +2,7 @@ import Steps from "@/components/navigation/steps/steps"
 import { StepItemProps } from "@/components/navigation/steps/types"
 import Input from "@/components/form/input";
 import { useState } from "react";
+import Home from "@/assets/icons/home.svg?react";
 
 export default function Setting() {
     const stepItems: StepItemProps[] = [
@@ -36,9 +37,9 @@ export default function Setting() {
 
 function GetKeyContent({uid, setUid}: {uid: string, setUid: Function}) {
     return (
-        <>
-            <Input type="input" clearable value={uid} onChange={(value) => setUid(value)}/>
-        </>
+        <div className="">
+            <Input type="number" suffixIcon={<Home/>} clearable value={uid} onChange={(value) => setUid(value)}/>
+        </div>
     )
 };
 
