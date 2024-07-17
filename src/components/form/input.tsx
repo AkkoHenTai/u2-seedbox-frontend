@@ -60,7 +60,6 @@ const Input: React.FC<InputProps> = ({
                     type={type} placeholder={placeholder} disabled={disabled} maxLength={maxLength} minLength={minLength} value={value}
                     onChange={handleChange} onInput={onInput} onBlur={onBlur} onFocus={onFocus}
                     className="bg-inherit flex-grow outline-none px-2 py-1"
-                    style={{ lineHeight: '1.5' }}
                 />
                 {clearable && value && (
                     <span onClick={handleClear} className="text-2xl ml-2 text-gray-400 hover:text-gray-600 cursor-pointer">×</span>

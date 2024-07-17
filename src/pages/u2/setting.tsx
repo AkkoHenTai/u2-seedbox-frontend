@@ -38,7 +38,7 @@ export default function Setting() {
 function GetKeyContent({uid, setUid}: {uid: string, setUid: Function}) {
     return (
         <div className="">
-            <Input type="number" suffixIcon={<Home/>} clearable value={uid} onChange={(value) => setUid(value)}/>
+            <Input type="text" suffixIcon={<Home/>} placeholder="123123" clearable value={uid} onChange={(value) => setUid(value)}/>
         </div>
     )
 };
