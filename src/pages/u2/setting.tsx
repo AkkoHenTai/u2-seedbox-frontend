@@ -37,7 +37,7 @@ export default function Setting() {
 function GetKeyContent({uid, setUid}: {uid: string, setUid: Function}) {
     return (
         <>
-            <Input type="input" clearable value={uid} onChange={(value) => setUid(value)} />
+            <Input type="input" clearable value={uid} onChange={(value) => setUid(value)}/>
         </>
     )
 };
