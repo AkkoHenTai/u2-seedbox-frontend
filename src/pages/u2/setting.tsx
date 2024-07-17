@@ -1,5 +1,6 @@
 import Steps from "@/components/navigation/steps/steps"
 import { StepItemProps } from "@/components/navigation/steps/types"
+import Input from "@/components/form/input";
 import { useState } from "react";
 
 export default function Setting() {
@@ -16,6 +17,10 @@ export default function Setting() {
         setCurrent(current);
     };
 
+
+    // uid
+    const [uid, setUid] = useState('');
+
     return (
         <div className="w-full h-full">
             <div className="flex flex-col items-center">
@@ -23,15 +28,17 @@ export default function Setting() {
             </div>
 
             <div className="">
-                {current === 0 ? GetKeyContent() : current === 1 ? BindKeyContent() : GetTokenContent()}
+                {current === 0 ? <GetKeyContent uid={uid} setUid={setUid}/> : current === 1 ? BindKeyContent() : GetTokenContent()}
             </div>
         </div>
     )
 }
 
-function GetKeyContent() {
+function GetKeyContent({uid, setUid}: {uid: string, setUid: Function}) {
     return (
-        <>1</>
+        <>
+            <Input type="input" clearable value={uid} onChange={(value) => setUid(value)} />
+        </>
     )
 };
 
