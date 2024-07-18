@@ -3,6 +3,8 @@ import { StepItemProps } from "@/components/navigation/steps/types"
 import Input from "@/components/form/input";
 import { useState } from "react";
 import Home from "@/assets/icons/home.svg?react";
+import Form from "@/components/form/form/form";
+import { FormItem } from "@/components/form/form/formItem";
 
 export default function Setting() {
     const stepItems: StepItemProps[] = [
@@ -29,16 +31,27 @@ export default function Setting() {
             </div>
 
             <div className="">
-                {current === 0 ? <GetKeyContent uid={uid} setUid={setUid}/> : current === 1 ? BindKeyContent() : GetTokenContent()}
+                {current === 0 ? <GetKeyContent uid={uid} setUid={setUid} /> : current === 1 ? BindKeyContent() : GetTokenContent()}
             </div>
         </div>
     )
 }
 
-function GetKeyContent({uid, setUid}: {uid: string, setUid: Function}) {
+function GetKeyContent({ uid, setUid }: { uid: string, setUid: Function }) {
+
+    const rules = {
+        uid: [
+            { required: true, message: 'uid必填' },
+        ]
+    }
+
     return (
         <div className="">
-            <Input type="text" suffixIcon={<Home/>} placeholder="123123" clearable value={uid} onChange={(value) => setUid(value)}/>
+            <Form rules={rules}>
+                <FormItem label="uid" name="uid" message="uid必填">
+                    <Input type="text" suffixIcon={<Home />} placeholder="123123" clearable value={uid} onChange={(value) => setUid(value)} />
+                </FormItem>
+            </Form>
         </div>
     )
 };
