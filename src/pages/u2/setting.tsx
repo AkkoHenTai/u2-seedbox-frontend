@@ -5,6 +5,7 @@ import { useState } from "react";
 import Home from "@/assets/icons/home.svg?react";
 import Form from "@/components/form/form/form";
 import { FormItem } from "@/components/form/form/formItem";
+import Button from "@/components/form/button";
 
 export default function Setting() {
     const stepItems: StepItemProps[] = [
@@ -43,15 +44,24 @@ function GetKeyContent({ uid, setUid }: { uid: string, setUid: Function }) {
         uid: [
             { required: true, message: 'uid必填' },
         ]
-    }
+    };
+
+    // 提交事件
+    const handleSubmit = async (data?: any) => {
+        console.log('Form Submitted:', data);
+    };
 
     return (
-        <div className="">
-            <Form rules={rules}>
-                <FormItem label="uid" name="uid" message="uid必填">
+        <div className="w-52">
+            <Form rules={rules} onSubmit={handleSubmit}>
+                <FormItem label="uid" name="uid">
                     <Input type="text" suffixIcon={<Home />} placeholder="123123" clearable value={uid} onChange={(value) => setUid(value)} />
                 </FormItem>
+                <FormItem label="" name="submit">
+                    <Button type="primary" nativeType="submit">Log in</Button>
+                </FormItem>
             </Form>
+
         </div>
     )
 };

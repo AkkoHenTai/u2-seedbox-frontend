@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 interface InputProps {
     type: string; // 输入框类型，如password、textarea等
     value: string; // 输入框的值
-
+    name?: string; // 输入框的名称，表单验证会用到，如果没有表单就无法根据name获取值
     placeholder?: string; // 输入框的占位文本
     clearable?: boolean; // 是否显示清除按钮
     disabled?: boolean; // 是否禁用
@@ -12,7 +12,6 @@ interface InputProps {
     iconColor?: string; // 图标颜色
     maxLength?: number; // 最大长度
     minLength?: number; // 最小长度 
-
     onBlur?: () => void; // 失去焦点事件
     onFocus?: () => void; // 获得焦点事件
     onChange?: (value: string) => void;
@@ -21,7 +20,7 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({
-    type = 'input', value: propValue, placeholder, clearable = false, disabled = false, prefixIcon, suffixIcon, maxLength, minLength, iconColor = '#1677ff',
+    type = 'input', value: propValue, name, placeholder, clearable = false, disabled = false, prefixIcon, suffixIcon, maxLength, minLength, iconColor = '#1677ff',
     onBlur, onFocus, onChange, onInput, onClear
 }) => {
     // 输入框的值
@@ -71,7 +70,7 @@ const Input: React.FC<InputProps> = ({
             )}
             <div className="flex items-center w-full">
                 <input
-                    type={type} placeholder={placeholder} disabled={disabled} maxLength={maxLength} minLength={minLength} value={value}
+                    type={type} placeholder={placeholder} disabled={disabled} maxLength={maxLength} minLength={minLength} value={value} name={name}
                     onChange={handleChange} onInput={onInput} onBlur={handleBlur} onFocus={handleFocus}
                     className="bg-inherit flex-grow outline-none py-1"
                 />

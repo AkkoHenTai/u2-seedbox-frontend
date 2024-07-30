@@ -20,14 +20,14 @@ export interface FormItemRule extends RuleItem {
 
 
 export interface FormItemProps{
-    label: string; // 表单项标签
+    label?: string; // 表单项标签
     name: string; // 表单项名称
-    message: string; // 表单项错误提示信息
 
     children: React.ReactNode;
 
     labelAlign?: 'left' | 'right'; // label文本对齐方式
 
     rule?: FormItemRule[]; // 表单项验证规则
+    error?: string;
     onChange?: (value: any) => void;
 }
