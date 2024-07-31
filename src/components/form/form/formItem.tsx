@@ -5,7 +5,7 @@ export function FormItem({
     label, name, error, children, rule, onChange
 }: FormItemProps) {
     return (
-        <div className="mb-4 last:mb-0">
+        <div className="mb-4 last:mb-0 relative">
             <label>{label}</label>
             {React.cloneElement(children as React.ReactElement, {
                 name,
@@ -13,7 +13,7 @@ export function FormItem({
                     onChange && onChange(e.target.value);
                 }
             })}
-            {error && <span className="text-red-500">{error}</span>}
+            {error && <span className="text-red-500 text-xs absolute">{error}</span>}
         </div>
     );
 };
