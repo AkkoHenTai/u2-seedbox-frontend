@@ -5,7 +5,7 @@ export function FormItem({
     label, name, error, children, rule, onChange
 }: FormItemProps) {
     return (
-        <div className="">
+        <div className="mb-4 last:mb-0">
             <label>{label}</label>
             {React.cloneElement(children as React.ReactElement, {
                 name,
