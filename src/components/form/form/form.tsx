@@ -51,7 +51,7 @@ export default function Form({
             {
                 React.Children.map(children, (child) => {
                     if (React.isValidElement<FormItemProps>(child) && child.props.name) {
-                        // 获取该子元素对应的rule
+                        // 获取该子元素对应的error
                         const error = errors[child.props.name];
 
                         return React.cloneElement(child, {
