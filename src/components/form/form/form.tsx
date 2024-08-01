@@ -54,8 +54,11 @@ export default function Form({
                         // 获取该子元素对应的error
                         const error = errors[child.props.name];
 
+                        // 获取该子元素对应的rule
+                        const rule = rules[child.props.name];
+
                         return React.cloneElement(child, {
-                            error, labelAlign
+                            error, labelAlign, rule
                         });
                     }
                 })
