@@ -15,7 +15,7 @@ export function FormItem({
                     onChange && onChange(e.target.value);
                 }
             })}
-            {error && <span className="text-red-500 text-xs absolute top-0.5">{error}</span>}
+            {error && <span className="text-red-500 text-xs absolute -bottom-5">{error}</span>}
         </div>
     );
 };
